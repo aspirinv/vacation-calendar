@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cargo",
+			"command": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "rust: cargo build",
+			"env": {
+				"CARGO_TARGET_DIR": "${workspaceFolder}/public"
+			},
+			"options": {
+				"cwd": "${workspaceFolder}/api"
+			}
+		}
+	]
+}

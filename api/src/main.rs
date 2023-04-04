@@ -8,8 +8,8 @@ use log::{error, info};
  mod domain;
  mod controller;
 
-// mod util;
-// use util::settings::Settings;
+ mod util;
+ use util::settings::Settings;
 // use util::state::State;
 
 
@@ -18,18 +18,10 @@ async fn main() -> std::io::Result<()> {
 
     std::env::set_var("RUST_LOG", "debug, actix_web=debug");
     env_logger::init();
-    
-    //"j9V3zjijlaZE5xAw"
-    //mongodb+srv://zealot:j9V3zjijlaZE5xAw@zedcluster.t1uzdqt.mongodb.net/test
-    // info!("Getting settings");
+
+    info!("Getting settings");
    
-    // let settings =  match Settings::init(){
-    //     Ok(v) => v,
-    //     Err(e)=> {
-    //         error!("{}", e);
-    //         panic!()
-    //     }
-    // };
+    let settings = Settings::init().unwrap();
 
     // let client_options = ClientOptions::parse(settings.db_connection_string).await.unwrap();
     // let client = Client::with_options(client_options).unwrap();

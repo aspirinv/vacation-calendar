@@ -1,12 +1,12 @@
 use actix_web::web;
 
 pub mod file;
-//pub mod requests;
+mod calendar;
 
 pub fn config(cfg: &mut web::ServiceConfig){
-    //cfg.service(requests::list);
+    cfg.service(calendar::get);
     
     cfg.service(file::index);
-    cfg.service(file::files);
+    cfg.route("/{filename:.*}", web::get().to(file::files));
 
 }

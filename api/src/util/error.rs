@@ -39,3 +39,9 @@ impl std::convert::From<mongodb::error::Error> for JsonError {
         JsonError{ status_code: StatusCode::INTERNAL_SERVER_ERROR.as_u16(), message: "Failure on data access".to_string(), details: value.to_string()}
     }
 }
+
+impl std::convert::From<std::io::Error> for JsonError {
+    fn from(value: std::io::Error) -> Self {
+        JsonError{ status_code: StatusCode::INTERNAL_SERVER_ERROR.as_u16(), message: "IO exception".to_string(), details: value.to_string()}
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [    
+          {
+            "name": "serverOnly",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/public/debug/api.exe",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "rust: cargo build",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

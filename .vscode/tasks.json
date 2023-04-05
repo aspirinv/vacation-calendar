@@ -13,8 +13,8 @@
 				"CARGO_TARGET_DIR": "${workspaceFolder}/public"
 			},
 			"options": {
-				"cwd": "${workspaceFolder}/api"
-			}
+				"cwd": "${workspaceFolder}/api",
+			}			
 		}
 	]
 }

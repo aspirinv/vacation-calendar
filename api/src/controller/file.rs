@@ -2,11 +2,11 @@ use actix_files::NamedFile;
 use actix_web::{get, HttpRequest, Responder};
 use std::path::PathBuf;
 
+use crate::util::error::JsonError;
 
-#[get("/{filename}")]
-pub async fn files(req: HttpRequest) -> impl Responder {
-    let path: PathBuf = ("public/build/".to_owned() + req.match_info().query("filename")).parse().unwrap();
-    NamedFile::open(path)
+pub async fn files(req: HttpRequest) -> Result<NamedFile, JsonError> {
+    let path: PathBuf = ("public/".to_owned() + req.match_info().query("filename")).parse().unwrap();
+    Ok(NamedFile::open(path)?)
 }
 
 #[get("/")]

@@ -2,6 +2,7 @@ use actix_web::web;
 
 pub mod file;
 mod calendar;
+mod user;
 
 pub fn config(cfg: &mut web::ServiceConfig){
     cfg.service(calendar::get);

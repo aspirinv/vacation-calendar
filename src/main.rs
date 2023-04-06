@@ -1,6 +1,8 @@
 use actix_web::{App, HttpServer};
 use actix_web::middleware::Logger;
-use mongodb::{Client, options::ClientOptions};
+use actix_web::web::Data;
+
+use mongodb::{Client, options::ClientOptions };
 
 use std::sync::Arc;
 use log::{error, info};
@@ -21,15 +23,19 @@ async fn main() -> std::io::Result<()> {
 
     info!("Getting settings");
    
-    let settings = Settings::init().unwrap();
+    let settings = Settings::init();
+
+//https://github.com/ramosbugs/oauth2-rs/blob/main/examples/google.rs
+//https://blog.logrocket.com/9-rust-authentication-libraries-that-are-ready-for-production/
 
     // let client_options = ClientOptions::parse(settings.db_connection_string).await.unwrap();
     // let client = Client::with_options(client_options).unwrap();
     // let database = client.database("savier");
-    
-    HttpServer::new(move || {
-        App::new()
+
+    HttpServer::new(move || {        
+        App::new()        
             // .app_data(Data::new(State{ db: Arc::new(database.clone())}))
+            .app_data(Data::new(settings.clone()))
             .wrap(Logger::default())
             .configure(controller::config)
             

@@ -1,6 +1,6 @@
 use actix_web::get;
 use actix_web::web::Json;
-use chrono::{Utc, NaiveDate};
+use chrono::NaiveDate;
 
 use crate::util::error::JsonError;
 use crate::domain::calendar::{Calendar, Vacation};

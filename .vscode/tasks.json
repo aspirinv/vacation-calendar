@@ -10,11 +10,8 @@
 			"group": "build",
 			"label": "rust: cargo build",
 			"env": {
-				"CARGO_TARGET_DIR": "${workspaceFolder}/public"
-			},
-			"options": {
-				"cwd": "${workspaceFolder}/api",
-			}			
+				"CARGO_TARGET_DIR": "${workspaceFolder}/public"				
+			}
 		}
 	]
 }

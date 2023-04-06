@@ -4,6 +4,7 @@
     const builder = new datesBuilder(2023);    
 
     $: weekend_class = "bg-danger text-light";
+
 </script>
 
 <div class="row">

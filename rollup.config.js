@@ -5,6 +5,7 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
+import dev from 'rollup-plugin-dev'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -30,7 +31,7 @@ function serve() {
 }
 
 export default {
-	input: 'src/main.js',
+	input: 'front/main.js',
 	output: {
 		sourcemap: true,
 		format: 'iife',
@@ -60,9 +61,18 @@ export default {
 		}),
 		commonjs(),
 
+		!production && dev({
+			dirs: ['public'],
+            spa: 'public/index.html',
+            port: 33312,
+			host: '0.0.0.0',
+			proxy: [
+				{ from: '/api', to: 'http://127.0.0.1:58080/api', opts:{ } }
+			]
+		}),
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
-		!production && serve(),
+		// !production && serve(),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production

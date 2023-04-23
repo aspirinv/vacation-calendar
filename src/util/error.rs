@@ -16,6 +16,12 @@ pub struct JsonError{
     details: String
 }
 
+impl JsonError{
+    pub fn init(status_code: u16, message: String) -> JsonError{
+        JsonError { status_code, message, details: "".to_string() }
+    }
+}
+
 impl fmt::Display for JsonError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let json = serde_json::to_string_pretty(&self).unwrap();

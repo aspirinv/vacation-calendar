@@ -12,6 +12,9 @@ use log::{error, info};
 
  mod util;
  use util::settings::Settings;
+
+use crate::util::auth_header::AuthHeader;
+
 // use util::state::State;
 
 
@@ -36,6 +39,7 @@ async fn main() -> std::io::Result<()> {
         App::new()        
             // .app_data(Data::new(State{ db: Arc::new(database.clone())}))
             .app_data(Data::new(settings.clone()))
+            .wrap(AuthHeader(settings.auth_secret.to_string()))
             .wrap(Logger::default())
             .configure(controller::config)
             

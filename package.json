@@ -20,6 +20,8 @@
     "svelte": "^3.55.0"
   },
   "dependencies": {
-    "sirv-cli": "^2.0.0"
+    "bootstrap-icons": "^1.10.5",
+    "sirv-cli": "^2.0.0",
+    "svelte-bootstrap-icons": "^2.3.1"
   }
 }

@@ -1,0 +1,11 @@
+.flex-even{
+    flex: 1;
+}
+.start-day{
+    background:linear-gradient(135deg, #F000 50%, rgba(var(--bs-info-rgb)) 50%);
+    background-repeat: no-repeat;
+}
+.end-day{
+    background:linear-gradient(135deg, rgba(var(--bs-info-rgb)) 50%, #f000 50%);
+    background-repeat: no-repeat;
+}
